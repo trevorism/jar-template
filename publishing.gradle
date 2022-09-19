@@ -1,0 +1,26 @@
+publishing {
+    publications {
+        release(MavenPublication) {
+            groupId "com.trevorism"
+            artifactId project.name
+            version version
+            from components.java
+        }
+    }
+    repositories {
+        maven {
+            name "release"
+            url = "https://maven.pkg.github.com/trevorism/jar-template"
+            credentials{
+                username = System.getenv("GITHUB_ACTOR")
+                password = System.getenv("GITHUB_TOKEN")
+            }
+        }
+    }
+}
+
+task publishRelease {
+    dependsOn "publishReleasePublicationToReleaseRepository"
+    group = "publishing"
+    description = "Runs the build and publishes a release to nexus"
+}

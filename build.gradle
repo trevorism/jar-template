@@ -1,5 +1,8 @@
-
-apply plugin: 'java'
+plugins{
+    id "java"
+    id "jacoco"
+    id "maven-publish"
+}
 
 repositories {
 	mavenCentral()
@@ -9,3 +12,5 @@ dependencies {
 	testImplementation 'junit:junit:4.13.2'
 }
 
+check.dependsOn "jacocoTestReport"
+apply from: "publishing.gradle"
