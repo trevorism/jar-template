@@ -29,10 +29,9 @@ jobs:
         with:
           arguments: build
 
-      - name: Publish to Artifactory
+      - name: Publish to Github
         env:
-          USERNAME: ${{ secrets.ARTIFACTORY_USERNAME }}
-          TOKEN: ${{ secrets.ARTIFACTORY_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           NEW_VERSION=$(echo "${GITHUB_REF}" | cut -d "/" -f3)
           ./gradlew -Pversion=${NEW_VERSION} publishRelease
