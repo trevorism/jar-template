@@ -10,7 +10,7 @@ publishing {
     repositories {
         maven {
             name "release"
-            url = "https://maven.pkg.github.com/trevorism/jar-template"
+            url = "https://maven.pkg.github.com/trevorism/lib"
             credentials{
                 username = System.getenv("GITHUB_ACTOR")
                 password = System.getenv("GITHUB_TOKEN")
