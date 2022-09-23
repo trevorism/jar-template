@@ -38,7 +38,7 @@ jobs:
 
       - name: Replace gradle properties
         run: |
-          sed -ie "/version=/ s/=.*/=${{ github.ref }}/" ./gradle.properties
+          sed -ie "/version=/ s/=.*/=0.0.4/" ./gradle.properties
 
       - name: Commit change
         uses: stefanzweifel/git-auto-commit-action@v4
