@@ -37,9 +37,8 @@ jobs:
           arguments: clean build
 
       - name: Replace gradle properties
-        uses: lefherz/action-sed@master
-        with:
-          args: sed -ie "/version=/ s/=.*/=0.0.4/" ./gradle.properties
+        run: |
+          sed -ie "/version=/ s/=.*/=0.0.4/" ./gradle.properties
 
       - name: Commit change
         uses: EndBug/add-and-commit@v9
