@@ -31,5 +31,19 @@ jobs:
 
       - name: Build with Gradle
         uses: gradle/gradle-build-action@0d13054264b0bb894ded474f08ebb30921341cee
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           arguments: clean build
+
+      - name: Replace gradle properties
+        uses: lefherz/action-sed@master
+        with:
+          args: sed -i "/version=/ s/=.*/=0.0.4/" gradle.properties
+
+      - name: Commit change
+        uses: EndBug/add-and-commit@v9
+        with:
+          message: '[skip ci] Bump gradle.properties'
+          add: 'gradle.properties'
+          cwd: '.'
