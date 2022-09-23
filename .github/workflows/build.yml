@@ -19,9 +19,7 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
-        with:
-          token: ${{ secrets.PAT }}
-          
+
       - name: Set up JDK 8
         uses: actions/setup-java@v3
         with:
@@ -47,5 +45,5 @@ jobs:
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
           commit_message: 'Bump gradle.properties'
-          push_options: --force
+          push_options: '--force'
 
