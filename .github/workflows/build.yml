@@ -28,8 +28,8 @@ jobs:
         id: script
         with:
           script: |
-            Add-Content -Path .\src\main\resources\secrets.properties -Value 'clientId=${{ secrets.CLIENTID }}'
-            Add-Content -Path .\src\main\resources\secrets.properties -Value 'clientSecret=${{ secrets.CLIENTSECRET }}'
+            Add-Content -Path ..\src\main\resources\secrets.properties -Value 'clientId=${{ secrets.CLIENTID }}'
+            Add-Content -Path ..\src\main\resources\secrets.properties -Value 'clientSecret=${{ secrets.CLIENTSECRET }}'
 
       - name: Build with Gradle
         env:
