@@ -1,1 +1,1 @@
-Here
+Here so that gradle will process resources.
