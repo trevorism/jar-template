@@ -6,10 +6,8 @@ on:
   pull_request:
     branches: [ master, main ]
 
-permissions: write-all
-
 jobs:
   call-build:
     uses: trevorism/actions-workflows/.github/workflows/build.yml@master
-      secrets: inherit
+    secrets: inherit
 
