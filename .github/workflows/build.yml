@@ -25,11 +25,11 @@ jobs:
 
       - name: Create secrets file
         uses: Amadevus/pwsh-script@v2
-          id: script
-          with:
-            script: |
-              Add-Content -Path .\src\main\resources\secrets.properties -Value 'clientId=${{ secrets.CLIENTID }}'
-              Add-Content -Path .\src\main\resources\secrets.properties -Value 'clientSecret=${{ secrets.CLIENTSECRET }}'
+        id: script
+        with:
+          script: |
+            Add-Content -Path .\src\main\resources\secrets.properties -Value 'clientId=${{ secrets.CLIENTID }}'
+            Add-Content -Path .\src\main\resources\secrets.properties -Value 'clientSecret=${{ secrets.CLIENTSECRET }}'
 
       - name: Build with Gradle
         env:
