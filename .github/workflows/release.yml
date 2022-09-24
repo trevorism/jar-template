@@ -7,6 +7,5 @@ on:
 jobs:
   call-jar-release:
     uses: trevorism/actions-workflows/.github/workflows/jar-release.yml@master
-    secrets: inherit
     with:
       NEW_VERSION: '0.1.0'
