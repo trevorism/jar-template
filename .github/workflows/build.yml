@@ -7,40 +7,5 @@ on:
     branches: [ master ]
 
 jobs:
-  build:
-
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v3
-      - name: Set up JDK 8
-        uses: actions/setup-java@v3
-        with:
-          java-version: '8'
-          distribution: 'adopt'
-          cache: 'gradle'
-
-      - name: Chmod gradlew
-        run: chmod +x ./gradlew
-
-      - name: Create secrets file
-        uses: Amadevus/pwsh-script@v2
-        id: script
-        with:
-          script: |
-            Add-Content -Path .\src\main\resources\secrets.properties -Value 'clientId=${{ secrets.CLIENTID }}'
-            Add-Content -Path .\src\main\resources\secrets.properties -Value 'clientSecret=${{ secrets.CLIENTSECRET }}'
-
-      - name: Build with Gradle
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        uses: gradle/gradle-build-action@0d13054264b0bb894ded474f08ebb30921341cee
-        with:
-          arguments: clean build
-
-      - name: Publish to Github
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          ./gradlew publishRelease
-
+  call-build:
+    uses: trevorism/actions-workflows/.github/workflows/alpha-build.yml@master
