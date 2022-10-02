@@ -1,11 +1,9 @@
-name: Java CI with Gradle
+name: Gradle Publish
 
 on:
-  push:
-    branches: [ master ]
-  pull_request:
-    branches: [ master ]
+  release:
+    types: [published]
 
 jobs:
-  call-build:
+  call-jar-release:
     uses: trevorism/actions-workflows/.github/workflows/alpha-release.yml@master
